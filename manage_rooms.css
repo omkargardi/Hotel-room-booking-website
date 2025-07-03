@@ -1,0 +1,85 @@
+/* manage_rooms.css */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+a.button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+a.button:hover {
+    background-color: #219150;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+table th {
+    background-color: #3498db;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.action-links a {
+    text-decoration: none;
+    color: white;
+    padding: 6px 12px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.action-links .edit {
+    background-color: #f39c12;
+}
+
+.action-links .edit:hover {
+    background-color: #d68910;
+}
+
+.action-links .delete {
+    background-color: #e74c3c;
+}
+
+.action-links .delete:hover {
+    background-color: #c0392b;
+}

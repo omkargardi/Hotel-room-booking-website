@@ -1,0 +1,47 @@
+/* admin_dashboard.css */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 20px 0;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #3498db;
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+a:hover {
+    background-color: #2980b9;
+}

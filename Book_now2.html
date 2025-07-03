@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Form</title>
+
+    <!-- External Fonts and Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Taviraj:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/linearicons.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #508bfc;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        .form-section {
+            flex: 1;
+            padding: 10px;
+        }
+        label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 6px;
+            margin-top: 3px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #508bfc;
+            color: #fff;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #4069e0;
+        }
+        .gpay-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .gpay-qr {
+            width: 120px;
+            height: 120px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <form action="./insert.php" method="POST" enctype="multipart/form-data">
+        <!-- Left Section: Personal and Booking Details -->
+        <div class="form-section">
+            <h2>Booking Details</h2>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="room"> Double Room Type:</label>
+<select id="room" name="room" required>
+    <option value="standard double room">Standard Double Room</option>
+    <option value="deluxe double room">Deluxe Double Room</option>
+    <option value="superior double room">Superior Double Room</option>
+    <option value="double suite">Double Suite</option>
+    <option value="executive double room">Executive Double Room</option>
+</select>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" min="1" required>
+
+            <label for="arrival">Arrival Date & Time:</label>
+            <input type="datetime-local" id="arrival" name="arrival" required>
+
+            <label for="departure">Departure Date:</label>
+            <input type="date" id="departure" name="departure" required>
+        </div>
+
+        <!-- Right Section: Payment Details and Special Requests -->
+        <div class="form-section">
+            <h2>Payment & Requests</h2>
+            <label for="requests">Special Requests:</label>
+            <textarea id="requests" name="requests" rows="2"></textarea>
+
+            <div class="gpay-container">
+                <h3>Payment Options</h3>
+                
+                <!-- Google Pay Option -->
+                <div>
+                    <label>
+                        <input type="radio" name="paymentMethod" value="gpay" id="gpayRadio" checked> Pay via Google Pay
+                    </label>
+                    <div id="gpayDetails">
+                        <img src="img/QR.png.jpeg" alt="Google Pay QR Code" class="gpay-qr">
+                        <p>Scan the QR code to pay.</p>
+                        <label>
+                            <input type="checkbox" id="paymentConfirmed"> I have completed the payment
+                        </label>
+                        <label for="paymentScreenshot">Upload Payment Screenshot:</label>
+                        <input type="file" id="paymentScreenshot" name="paymentScreenshot" accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Offline Payment Option -->
+                <div>
+                    <label>
+                        <input type="radio" name="paymentMethod" value="offline" id="offlineRadio"> Pay offline before departure
+                    </label>
+                    <div id="offlineDetails" style="display: none;">
+                        <p>You agree to pay the full amount at the hotel before your departure.</p>
+                        <label>
+                            <input type="checkbox" id="offlineAgreement" name="offlineAgreement"> I agree to pay before departure
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" id="bookNowButton" disabled>Book Now</button>
+        </div>
+    </form>
+
+    <script>
+        // Handle radio button changes
+        const gpayRadio = document.getElementById('gpayRadio');
+        const offlineRadio = document.getElementById('offlineRadio');
+        const gpayDetails = document.getElementById('gpayDetails');
+        const offlineDetails = document.getElementById('offlineDetails');
+
+        gpayRadio.addEventListener('change', function() {
+            gpayDetails.style.display = 'block';
+            offlineDetails.style.display = 'none';
+            checkForm();
+        });
+
+        offlineRadio.addEventListener('change', function() {
+            gpayDetails.style.display = 'none';
+            offlineDetails.style.display = 'block';
+            checkForm();
+        });
+
+        // Form validation
+        document.getElementById("paymentConfirmed").addEventListener("change", checkForm);
+        document.getElementById("paymentScreenshot").addEventListener("change", checkForm);
+        document.getElementById("offlineAgreement").addEventListener("change", checkForm);
+
+        function checkForm() {
+            const bookNowButton = document.getElementById("bookNowButton");
+            if (gpayRadio.checked) {
+                let checkbox = document.getElementById("paymentConfirmed").checked;
+                let file = document.getElementById("paymentScreenshot").files.length > 0;
+                bookNowButton.disabled = !(checkbox && file);
+            } else if (offlineRadio.checked) {
+                let agreement = document.getElementById("offlineAgreement").checked;
+                bookNowButton.disabled = !agreement;
+            }
+        }
+
+        // Pre-fill room type from URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roomType = urlParams.get('room');
+            if (roomType) {
+                const roomSelect = document.getElementById('room');
+                switch(roomType) {
+                    case 'standard double room': roomSelect.value = 'standard double room'; break;
+                    case 'deluxe double room': roomSelect.value = 'deluxe double room'; break;
+                    case 'superior double room': roomSelect.value = 'superior double room'; break;
+                    case 'double suite': roomSelect.value = 'double room'; break;
+                    case 'executive double room': roomSelect.value = 'executive double room'; break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

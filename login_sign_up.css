@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    background: linear-gradient(120deg, #74ebd5, #acb6e5); /* Vibrant gradient background */
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.heading {
+    color: #fff; /* White for contrast */
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: #fff;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+.container {
+    height: 600px;
+    width: 500px;
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Softer, deeper shadow */
+    border-radius: 25px; /* More rounded corners */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+.btn {
+    height: 60px;
+    width: 300px;
+    margin: 20px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+}
+
+.login,
+.signup {
+    font-size: 22px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+    color: #444;
+    font-weight: 500;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.login:hover,
+.signup:hover {
+    color: #fff; /* White text when slider is over */
+}
+
+.slider {
+    height: 60px;
+    width: 150px;
+    border-radius: 50px;
+    background: linear-gradient(to right, #ff6b6b, #ff8e53); /* Bold, warm gradient */
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 110, 110, 0.4);
+}
+
+.moveslider {
+    left: 250px;
+}
+
+.form-section {
+    height: 500px;
+    width: 1000px;
+    padding: 20px 0;
+    display: flex;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    left: 0px;
+}
+
+.form-section-move {
+    left: -500px;
+}
+
+.login-box,
+.signup-box {
+    height: 100%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+.login-box {
+    gap: 50px;
+}
+
+.signup-box {
+    gap: 30px;
+}
+
+.ele {
+    height: 60px;
+    width: 400px;
+    outline: none;
+    border: none;
+    color: #333;
+    background: rgba(240, 240, 240, 0.9);
+    border-radius: 50px;
+    padding-left: 30px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.ele:focus {
+    background: #fff;
+    box-shadow: 0 0 12px rgba(255, 110, 110, 0.5); /* Glow effect */
+    border: 2px solid #ff8e53;
+}
+
+.clkbtn {
+    height: 60px;
+    width: 150px;
+    border-radius: 50px;
+    background: linear-gradient(to right, #ff6b6b, #ff8e53); /* Matching gradient */
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 110, 110, 0.4);
+    transition: all 0.3s ease;
+}
+
+.clkbtn:hover {
+    transform: translateY(-3px); /* Button lift */
+    box-shadow: 0 10px 25px rgba(255, 110, 110, 0.6);
+}
+
+/* Responsiveness */
+@media screen and (max-width: 650px) {
+    .container {
+        height: 600px;
+        width: 300px;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .btn {
+        height: 50px;
+        width: 200px;
+    }
+
+    .login,
+    .signup {
+        font-size: 19px;
+    }
+
+    .slider {
+        height: 50px;
+        width: 100px;
+        left: 50px;
+    }
+
+    .moveslider {
+        left: 150px;
+    }
+
+    .form-section {
+        height: 500px;
+        width: 600px;
+    }
+
+    .form-section-move {
+        left: -300px;
+    }
+
+    .login-box,
+    .signup-box {
+        width: 300px;
+    }
+
+    .ele {
+        height: 50px;
+        width: 250px;
+        font-size: 15px;
+    }
+
+    .clkbtn {
+        height: 50px;
+        width: 130px;
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container {
+        height: 600px;
+        width: 250px;
+    }
+
+    .heading {
+        font-size: 30px;
+    }
+
+    .title {
+        font-size: 10px;
+    }
+
+    .btn {
+        height: 50px;
+        width: 200px;
+    }
+
+    .login,
+    .signup {
+        font-size: 19px;
+    }
+
+    .slider {
+        height: 50px;
+        width: 100px;
+        left: 27px;
+    }
+
+    .moveslider {
+        left: 127px;
+    }
+
+    .form-section {
+        height: 500px;
+        width: 500px;
+    }
+
+    .form-section-move {
+        left: -250px;
+    }
+
+    .login-box,
+    .signup-box {
+        width: 250px;
+    }
+
+    .ele {
+        height: 50px;
+        width: 220px;
+        font-size: 15px;
+    }
+
+    .clkbtn {
+        height: 50px;
+        width: 130px;
+        font-size: 19px;
+    }
+    .switch-form {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .switch-form a {
+        color: #007bff; /* Or your preferred link color */
+        text-decoration: none;
+    }
+    
+    .switch-form a:hover {
+        text-decoration: underline;
+    }
+    
+}
